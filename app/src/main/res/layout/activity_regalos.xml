@@ -43,6 +43,10 @@
         android:layout_height="match_parent"
         android:numColumns="3"
         android:layout_marginTop="18dp"
-        android:paddingHorizontal="6dp"/>
+        android:paddingHorizontal="6dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+
+        />
 
 </LinearLayout>
