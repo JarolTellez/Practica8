@@ -9,17 +9,21 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="320dp"
         android:layout_gravity="center"
         android:background="@drawable/happybox"
+        android:layout_marginTop="90dp"
         />
 
     <Button
         android:id="@+id/btn_visitar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:background="@drawable/forma"
         android:text="Visitar"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
         android:layout_gravity="center"/>
 
 </LinearLayout>

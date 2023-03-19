@@ -7,10 +7,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 class Principal : AppCompatActivity() {
     var adapter: RegalosAdapter? = null
@@ -24,105 +21,47 @@ class Principal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
 
-        cargarRegalos()
-
-        adapter=RegalosAdapter(this,detalles)
-        adapter=RegalosAdapter(this,globos)
-        adapter=RegalosAdapter(this,peluches)
-        adapter=RegalosAdapter(this,regalos)
-        adapter=RegalosAdapter(this,tazas)
-
-        var gridDetalles:GridView =findViewById(R.id.gridCatalogo) as GridView
+        var btnDetalles:Button=findViewById(R.id.btnDetalles)as Button
+        var btnGlobos:Button=findViewById(R.id.btnGlobos)as Button
+        var btnPeluches:Button=findViewById(R.id.btnPeluches)as Button
+        var btnRegalos:Button=findViewById(R.id.btnRegalos)as Button
+        var btnTazas:Button=findViewById(R.id.btnTazas)as Button
 
 
-        gridDetalles.adapter= adapter
-
-
-    }
-
-    fun cargarRegalos(){
-
-        detalles.add(Detalles(R.drawable.cumplecheve,"320"))
-        detalles.add(Detalles(R.drawable.cumplebotanas,"150"))
-        detalles.add(Detalles(R.drawable.cumplepaletas,"190"))
-        detalles.add(Detalles(R.drawable.cumpleescolar,"320"))
-        detalles.add(Detalles(R.drawable.cumplesnack,"320"))
-        detalles.add(Detalles(R.drawable.cumplevinos,"370"))
-
-        globos.add(Detalles(R.drawable.globos,"240"))
-        globos.add(Detalles(R.drawable.globoamor,"820"))
-        globos.add(Detalles(R.drawable.globocumple,"260"))
-        globos.add(Detalles(R.drawable.globonum,"760"))
-        globos.add(Detalles(R.drawable.globofestejo,"450"))
-        globos.add(Detalles(R.drawable.globoregalo,"240"))
-
-        peluches.add(Detalles(R.drawable.peluches,"320"))
-        peluches.add(Detalles(R.drawable.peluchemario,"320"))
-        peluches.add(Detalles(R.drawable.pelucheminecraft,"290"))
-        peluches.add(Detalles(R.drawable.peluchepeppa,""))
-        peluches.add(Detalles(R.drawable.peluchesony,"330"))
-        peluches.add(Detalles(R.drawable.peluchestich,"280"))
-        peluches.add(Detalles(R.drawable.peluchevarios,"195"))
-
-        regalos.add(Detalles(R.drawable.regalos,"80"))
-        regalos.add(Detalles(R.drawable.regalobebe,"290"))
-        regalos.add(Detalles(R.drawable.regaloazul,"140"))
-        regalos.add(Detalles(R.drawable.regalocajas,"85"))
-        regalos.add(Detalles(R.drawable.regalocolores,""))
-        regalos.add(Detalles(R.drawable.regalovarios,"75"))
-
-        tazas.add(Detalles(R.drawable.tazas,"120"))
-        tazas.add(Detalles(R.drawable.tazaabuela,"120"))
-        tazas.add(Detalles(R.drawable.tazalove,"260"))
-        tazas.add(Detalles(R.drawable.tazaquiero,"280"))
-
-
-
-    }
-
-
-
-}
-
-class RegalosAdapter:BaseAdapter{
-    var detalles=ArrayList<Detalles>()
-    var contexto: Context?=null
-
-    constructor(context: Context,detalles:ArrayList<Detalles>){
-        this.detalles=detalles;
-        this.contexto=context
-    }
-
-
-    override fun getItem(p0: Int): Any {
-        return detalles[p0]
-    }
-
-    override fun getItemId(p0: Int): Long {
-
-    }
-
-
-
-    override fun getCount(): Int {
-        return detalles.size
-    }
-
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        var  regalo=detalles[p0]
-        var inflador=LayoutInflater.from(contexto)
-        var vista=inflador.inflate(R.layout.activity_regalos,null)
-
-        var imagen=vista.findViewById(R.id.iv_regalo_imagen)as ImageView
-        var precio=vista.findViewById(R.id.tv_regalo_precio) as TextView
-
-        vista.setOnClickListener {
-            var intent:Intent=Intent(contexto,Detalles::class.java)
-            intent.putExtra("imagen",regalo.image)
-            intent.putExtra("precio",regalo.precio)
-            contexto!!.startActivity(intent)
+        btnDetalles.setOnClickListener{
+            var intent:Intent=Intent(this, Regalos::class.java)
+            intent.putExtra("menuType","Detalles")
+            startActivity(intent)
 
         }
-        return vista
+
+        btnGlobos.setOnClickListener{
+            var intent:Intent=Intent(this, Regalos::class.java)
+            intent.putExtra("menuType","Globos")
+            startActivity(intent)
+
+        }
+        btnPeluches.setOnClickListener{
+            var intent:Intent=Intent(this, Regalos::class.java)
+            intent.putExtra("menuType","Peluches")
+            startActivity(intent)
+
+        }
+        btnRegalos.setOnClickListener{
+            var intent:Intent=Intent(this, Regalos::class.java)
+            intent.putExtra("menuType","Regalos")
+            startActivity(intent)
+
+        }
+        btnTazas.setOnClickListener{
+            var intent:Intent=Intent(this, Regalos::class.java)
+            intent.putExtra("menuType","Tazas")
+            startActivity(intent)
+
+        }
+
+
     }
+
+
 }
